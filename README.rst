@@ -150,6 +150,7 @@ Now that Cartographer and Cartographer’s ROS integration are installed, downlo
 
    # Launch the Taurob Tracker demo.
    roslaunch cartographer_ros demo_taurob_tracker.launch bag_filename:=${HOME}/Downloads/taurob_tracker_simulation.bag
-   The launch files will bring up roscore and rviz automatically.
+
+The launch files will bring up roscore and rviz automatically.
 
 
