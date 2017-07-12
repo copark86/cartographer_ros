@@ -61,16 +61,23 @@ at `our Contribution page`_.
 
 
 Cartographer ROS Integration
+============================
+
 Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations. This project provides Cartographer’s ROS integration.
 
 System Requirements
+===================
+
 See Cartographer’s system requirements.
 
 The following ROS distributions are currently supported:
 
 Indigo
 Kinetic
+
 Building & Installation
+=======================
+
 We recommend using wstool and rosdep. For faster builds, we also recommend using Ninja.
 
    # Install wstool and rosdep.
@@ -96,8 +103,11 @@ We recommend using wstool and rosdep. For faster builds, we also recommend using
    # Build and install.
    catkin_make_isolated --install --use-ninja
    source install_isolated/setup.bash
-   Running the demos
-   Now that Cartographer and Cartographer’s ROS integration are installed, download the example bags (e.g. 2D and 3D backpack collections of the Deutsches Museum) to a known location, in this case ~/Downloads, and use roslaunch to bring up the demo:
+
+Running the demos
+=================
+
+Now that Cartographer and Cartographer’s ROS integration are installed, download the example bags (e.g. 2D and 3D backpack collections of the Deutsches Museum) to a known location, in this case ~/Downloads, and use roslaunch to bring up the demo:
 
    # Download the 2D backpack example bag.
    wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/cartographer_paper_deutsches_museum.bag
@@ -105,41 +115,41 @@ We recommend using wstool and rosdep. For faster builds, we also recommend using
    # Launch the 2D backpack demo.
    roslaunch cartographer_ros demo_backpack_2d.launch bag_filename:=${HOME}/Downloads/cartographer_paper_deutsches_museum.bag
 
-# Pure localization demo: We use 2 different 2D bags from the Deutsche
-# Museum. The first one is used to generate the map, the second to run
-# pure localization.
-wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/b2-2016-04-05-14-44-52.bag
-wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/b2-2016-04-27-12-31-41.bag
-# Generate the map: Run the next command, wait until cartographer_offline_node finishes.
-roslaunch cartographer_ros offline_backpack_2d.launch bag_filenames:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag
-# Run pure localization:
-roslaunch cartographer_ros demo_backpack_2d_localization.launch \
-   bag_filename:=${HOME}/Downloads/b2-2016-04-27-12-31-41.bag \
-   map_filename:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag.pbstream
+   # Pure localization demo: We use 2 different 2D bags from the Deutsche
+   # Museum. The first one is used to generate the map, the second to run
+   # pure localization.
+   wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/b2-2016-04-05-14-44-52.bag
+   wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/b2-2016-04-27-12-31-41.bag
+   # Generate the map: Run the next command, wait until cartographer_offline_node finishes.
+   roslaunch cartographer_ros offline_backpack_2d.launch bag_filenames:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag
+   # Run pure localization:
+   roslaunch cartographer_ros demo_backpack_2d_localization.launch \
+      bag_filename:=${HOME}/Downloads/b2-2016-04-27-12-31-41.bag \
+      map_filename:=${HOME}/Downloads/b2-2016-04-05-14-44-52.bag.pbstream
 
-# Download the 3D backpack example bag.
-wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_3d/b3-2016-04-05-14-14-00.bag
+   # Download the 3D backpack example bag.
+   wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_3d/b3-2016-04-05-14-14-00.bag
 
-# Launch the 3D backpack demo.
-roslaunch cartographer_ros demo_backpack_3d.launch bag_filename:=${HOME}/Downloads/b3-2016-04-05-14-14-00.bag
+   # Launch the 3D backpack demo.
+   roslaunch cartographer_ros demo_backpack_3d.launch bag_filename:=${HOME}/Downloads/b3-2016-04-05-14-14-00.bag
 
-# Download the Revo LDS example bag.
-wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/revo_lds/cartographer_paper_revo_lds.bag
+   # Download the Revo LDS example bag.
+   wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/revo_lds/cartographer_paper_revo_lds.bag
 
-# Launch the Revo LDS demo.
-roslaunch cartographer_ros demo_revo_lds.launch bag_filename:=${HOME}/Downloads/cartographer_paper_revo_lds.bag
+   # Launch the Revo LDS demo.
+   roslaunch cartographer_ros demo_revo_lds.launch bag_filename:=${HOME}/Downloads/cartographer_paper_revo_lds.bag
 
-# Download the PR2 example bag.
-wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/pr2/2011-09-15-08-32-46.bag
+   # Download the PR2 example bag.
+   wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/pr2/2011-09-15-08-32-46.bag
 
-# Launch the PR2 demo.
-roslaunch cartographer_ros demo_pr2.launch bag_filename:=${HOME}/Downloads/2011-09-15-08-32-46.bag
+   # Launch the PR2 demo.
+   roslaunch cartographer_ros demo_pr2.launch bag_filename:=${HOME}/Downloads/2011-09-15-08-32-46.bag
 
-# Download the Taurob Tracker example bag.
-wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/taurob_tracker/taurob_tracker_simulation.bag
+   # Download the Taurob Tracker example bag.
+   wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/taurob_tracker/taurob_tracker_simulation.bag
 
-# Launch the Taurob Tracker demo.
-roslaunch cartographer_ros demo_taurob_tracker.launch bag_filename:=${HOME}/Downloads/taurob_tracker_simulation.bag
-The launch files will bring up roscore and rviz automatically.
+   # Launch the Taurob Tracker demo.
+   roslaunch cartographer_ros demo_taurob_tracker.launch bag_filename:=${HOME}/Downloads/taurob_tracker_simulation.bag
+   The launch files will bring up roscore and rviz automatically.
 
 
