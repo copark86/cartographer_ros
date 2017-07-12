@@ -73,37 +73,37 @@ Kinetic
 Building & Installation
 We recommend using wstool and rosdep. For faster builds, we also recommend using Ninja.
 
-# Install wstool and rosdep.
-sudo apt-get update
-sudo apt-get install -y python-wstool python-rosdep ninja-build
+   # Install wstool and rosdep.
+   sudo apt-get update
+   sudo apt-get install -y python-wstool python-rosdep ninja-build
 
-# Create a new workspace in 'catkin_ws'.
-mkdir catkin_ws
-cd catkin_ws
-wstool init src
+   # Create a new workspace in 'catkin_ws'.
+   mkdir catkin_ws
+   cd catkin_ws
+   wstool init src
 
-# Merge the cartographer_ros.rosinstall file and fetch code for dependencies.
-wstool merge -t src https://raw.githubusercontent.com/googlecartographer/cartographer_ros/master/cartographer_ros.rosinstall
-wstool update -t src
+   # Merge the cartographer_ros.rosinstall file and fetch code for dependencies.
+   wstool merge -t src https://raw.githubusercontent.com/googlecartographer/cartographer_ros/master/cartographer_ros.rosinstall
+   wstool update -t src
 
-# Install deb dependencies.
-# The command 'sudo rosdep init' will print an error if you have already
-# executed it since installing ROS. This error can be ignored.
-sudo rosdep init
-rosdep update
-rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
+   # Install deb dependencies.
+   # The command 'sudo rosdep init' will print an error if you have already
+   # executed it since installing ROS. This error can be ignored.
+   sudo rosdep init
+   rosdep update
+   rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 
-# Build and install.
-catkin_make_isolated --install --use-ninja
-source install_isolated/setup.bash
-Running the demos
-Now that Cartographer and Cartographer’s ROS integration are installed, download the example bags (e.g. 2D and 3D backpack collections of the Deutsches Museum) to a known location, in this case ~/Downloads, and use roslaunch to bring up the demo:
+   # Build and install.
+   catkin_make_isolated --install --use-ninja
+   source install_isolated/setup.bash
+   Running the demos
+   Now that Cartographer and Cartographer’s ROS integration are installed, download the example bags (e.g. 2D and 3D backpack collections of the Deutsches Museum) to a known location, in this case ~/Downloads, and use roslaunch to bring up the demo:
 
-# Download the 2D backpack example bag.
-wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/cartographer_paper_deutsches_museum.bag
+   # Download the 2D backpack example bag.
+   wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_2d/cartographer_paper_deutsches_museum.bag
 
-# Launch the 2D backpack demo.
-roslaunch cartographer_ros demo_backpack_2d.launch bag_filename:=${HOME}/Downloads/cartographer_paper_deutsches_museum.bag
+   # Launch the 2D backpack demo.
+   roslaunch cartographer_ros demo_backpack_2d.launch bag_filename:=${HOME}/Downloads/cartographer_paper_deutsches_museum.bag
 
 # Pure localization demo: We use 2 different 2D bags from the Deutsche
 # Museum. The first one is used to generate the map, the second to run
